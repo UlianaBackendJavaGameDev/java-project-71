@@ -12,7 +12,7 @@ public class Parser{
 
         if("json".equalsIgnoreCase(dataType)){
             mapper = new ObjectMapper();
-        } else if("yaml".equalsIgnoreCase(dataType) || "yaml".equalsIgnoreCase(dataType)){
+        } else if("yaml".equalsIgnoreCase(dataType) || "yml".equalsIgnoreCase(dataType)){
             mapper = new YAMLMapper();
         }else{
             throw new IllegalArgumentException("Unsupported format: " + dataType);

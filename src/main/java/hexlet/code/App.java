@@ -3,6 +3,7 @@ package hexlet.code;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
+import picocli.CommandLine.Option;
 
 import java.util.concurrent.Callable;
 
@@ -15,7 +16,13 @@ public class App implements Callable<Integer> {
 
     @Parameters(index = "1", description = "path to second file")
     private String filePath2;
-
+    
+    @Option(
+            names = {"-f", "--format"},
+            description = "output format [default: stylish]",
+            defaultValue = "stylish"
+    )
+    private String format;
     @Override
     public Integer call() throws Exception {
         String diff = Differ.generate(filePath1, filePath2);
