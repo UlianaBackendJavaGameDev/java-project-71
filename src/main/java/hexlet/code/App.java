@@ -18,9 +18,8 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        // Здесь в будущем будет логика сравнения файлов
-        System.out.println("File 1: " + filePath1);
-        System.out.println("File 2: " + filePath2);
+        String diff = Differ.generate(filePath1, filePath2);
+        System.out.println(diff);
         return 0;
     }
 
