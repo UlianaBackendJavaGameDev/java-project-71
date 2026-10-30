@@ -1,0 +1,28 @@
+name: Java CI with Gradle
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Настраиваем Java нужной версии (укажите 21, так как у вас стоит OpenJDK 21)
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # Настраиваем кэширование Gradle для быстрого билда
+      - uses: gradle/actions/setup-gradle@v3
+
+      # Запускаем сборку через созданный нами Makefile
+      - name: Run build with Make
+        run: make build
