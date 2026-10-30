@@ -1,4 +1,5 @@
 # Вычислитель отличий (Java)
+[![Java CI with Gradle](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml)
 
 [![hexlet-check](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions)
 

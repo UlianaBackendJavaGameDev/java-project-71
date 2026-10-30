@@ -40,6 +40,12 @@ jacoco{
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
+
+
+    testLogging {
+        showStandardStreams = true
+        events "failed"
+    }
 }
 
 jacoco {
