@@ -37,6 +37,7 @@ public class DifferTest {
     }
     return text.lines().map(String::stripTrailing).collect(Collectors.joining("\n")).trim();
   }
+
   @Test
   public void testGenerateYamlStylish() throws Exception {
     // 1. Берем пути к yaml-файлам

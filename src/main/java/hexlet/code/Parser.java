@@ -17,6 +17,6 @@ public class Parser {
     } else {
       throw new IllegalArgumentException("Unsupported format: " + dataType);
     }
-    return mapper.readValue(content, new TypeReference<Map<String,Object>>() {});
+    return mapper.readValue(content, new TypeReference<Map<String, Object>>() {});
   }
 }
