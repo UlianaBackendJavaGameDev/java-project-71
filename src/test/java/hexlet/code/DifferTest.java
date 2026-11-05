@@ -37,4 +37,19 @@ public class DifferTest {
     }
     return text.lines().map(String::stripTrailing).collect(Collectors.joining("\n")).trim();
   }
+  @Test
+  public void testGenerateYamlStylish() throws Exception {
+    // 1. Берем пути к yaml-файлам
+    String filePath1 = getFixturePath("file1.yml").toString();
+    String filePath2 = getFixturePath("file2.yml").toString();
+
+    // 2. Ожидаемый результат у нас тот же самый, что и для JSON (по условию задачи)
+    String expected = normalize(readFixture("expectedStylish.txt"));
+
+    // 3. Запускаем генерацию для YAML
+    String actual = normalize(Differ.generate(filePath1, filePath2));
+
+    // 4. Сравниваем
+    assertEquals(expected, actual);
+  }
 }

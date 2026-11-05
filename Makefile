@@ -1,23 +1,22 @@
 .PHONY: build
 build:
-	./gradlew build
+	.\gradlew.bat build
 
 test:
-	./gradlew test
+	.\gradlew.bat test
 
 lint:
-	./gradlew spotlessCheck
+	.\gradlew.bat spotlessCheck
 
 spotless-apply:
-	./gradlew spotlessApply
+	.\gradlew.bat spotlessApply
 
 clean:
-	./gradlew clean
+	.\gradlew.bat clean
 
 install:
-	./gradlew installDist
-
+	.\gradlew.bat installDist
 
 run-dist:
-	./gradlew installDist
-	./build/install/java-project-71/bin/java-project-71 $(ARGS)
+	.\gradlew.bat installDist
+	.\build\install\java-project-71\bin\java-project-71 $(ARGS)

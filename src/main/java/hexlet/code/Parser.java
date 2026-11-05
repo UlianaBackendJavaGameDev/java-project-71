@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import java.util.Map;
@@ -16,6 +17,6 @@ public class Parser {
     } else {
       throw new IllegalArgumentException("Unsupported format: " + dataType);
     }
-    return mapper.readValue(content, Map.class);
+    return mapper.readValue(content, new TypeReference<Map<String,Object>>() {});
   }
 }
