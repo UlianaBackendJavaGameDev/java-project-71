@@ -6,15 +6,7 @@
 
 ```bash
 $ ./build/install/app/bin/app file1.yml file2.yml
-
-{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}
+![img.png](img.png) 
 [![Java CI with Gradle](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml)
 
 [![hexlet-check](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions)

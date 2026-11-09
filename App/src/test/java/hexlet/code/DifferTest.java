@@ -6,6 +6,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 public class DifferTest {
@@ -53,4 +54,15 @@ public class DifferTest {
     // 4. Сравниваем
     assertEquals(expected, actual);
   }
+  @Test
+  public void testGeneratePlain() throws Exception{
+    String filePath1 = getFixturePath("file1.json").toString();
+    String filePath2 = getFixturePath("file2.json").toString();
+
+    String expected = normalize(readFixture("expectedPlain.txt"));
+    String actual = normalize(Differ.generate(filePath1, filePath2, "plain"));
+
+    assertEquals(expected, actual);
+  }
+
 }
