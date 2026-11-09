@@ -20,3 +20,10 @@ install:
 run-dist:
 	./gradlew installDist
 	./build/install/java-project-71/bin/java-project-71 $(ARGS)
+
+
+.PHONY: setup
+setup:
+	cd code/app && ./gradlew clean build
+	cd code/app && ./gradlew publishToMavenLocal
+	./gradlew compileTest
