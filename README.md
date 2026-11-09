@@ -1,5 +1,10 @@
 # Вычислитель отличий (Java)
 
+[![Java CI with Gradle](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml)
+
+[![hexlet-check](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions)
+
+
 ### Пример работы
 
 Сравнение двух плоских YAML файлов:
@@ -7,9 +12,6 @@
 ```bash
 $ ./build/install/app/bin/app file1.yml file2.yml
 ![img.png](img.png) 
-[![Java CI with Gradle](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/ci.yml)
-
-[![hexlet-check](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/UlianaBackendJavaGameDev/java-project-71/actions)
 
 Консольная утилита, которая сравнивает два файла JSON или YAML по ключам первого уровня и выводит разницу в трёх форматах. Вы разбираете аргументы командной строки через picocli, читаете оба формата через Jackson и выносите каждый формат вывода в свой класс. Тесты на JUnit вы пишете сами, а сборка в GitHub Actions проверяет стиль и порог покрытия.
 

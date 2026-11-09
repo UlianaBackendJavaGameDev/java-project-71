@@ -64,5 +64,14 @@ public class DifferTest {
 
     assertEquals(expected, actual);
   }
+@Test
+  public void testGenerateJson() throws Exception{
+    String filePath1 = getFixturePath("file1.json").toString();
+    String filePath2 = getFixturePath("file2.json").toString();
 
+    String expected = normalize(readFixture("expectedJson.txt"));
+    String actual = normalize(Differ.generate(filePath1, filePath2, "json"));
+
+    assertEquals(expected, actual);
+}
 }
