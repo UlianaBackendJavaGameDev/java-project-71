@@ -26,4 +26,3 @@ run-dist:
 setup:
 	cd code/app && ./gradlew clean build
 	cd code/app && ./gradlew publishToMavenLocal
-	./gradlew compileTest
