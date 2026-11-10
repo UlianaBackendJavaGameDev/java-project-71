@@ -24,5 +24,6 @@ run-dist:
 
 .PHONY: setup
 setup:
-	cd app && ./gradlew clean build
-	cd app && ./gradlew publishToMavenLocal
+	./gradlew clean build
+	./gradlew publishToMavenLocal
+	./gradlew test
