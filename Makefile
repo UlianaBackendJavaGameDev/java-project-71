@@ -1,29 +1,28 @@
 .PHONY: build
 build:
-	./gradlew build
+	cd app && ./gradlew build
 
 test:
-	./gradlew test
+	cd app && ./gradlew test
 
 lint:
-	./gradlew spotlessCheck
+	cd app && ./gradlew spotlessCheck
 
 spotless-apply:
-	./gradlew spotlessApply
+	cd app && ./gradlew spotlessApply
 
 clean:
-	./gradlew clean
+	cd app && ./gradlew clean
 
 install:
-	./gradlew installDist
+	cd app && ./gradlew installDist
 
 run-dist:
-	./gradlew installDist
-	./build/install/java-project-71/bin/java-project-71 $(ARGS)
-
+	cd app && ./gradlew installDist
+	cd app/build/install/java-project-71/bin/java-project-71 $(ARGS)
 
 .PHONY: setup
 setup:
-	./gradlew clean build
-	./gradlew publishToMavenLocal
-	./gradlew test
+	cd app && ./gradlew clean build
+	cd app && ./gradlew publishToMavenLocal
+	cd app && ./gradlew test
