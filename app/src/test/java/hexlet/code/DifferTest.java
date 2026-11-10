@@ -6,7 +6,6 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
-
 import org.junit.jupiter.api.Test;
 
 public class DifferTest {
@@ -20,18 +19,6 @@ public class DifferTest {
     return Files.readString(getFixturePath(fileName));
   }
 
-  @Test
-  public void testGenerateJsonStylish() throws Exception {
-    String filePath1 = getFixturePath("file1.json").toString();
-    String filePath2 = getFixturePath("file2.json").toString();
-
-    // Обязательно прогоняем через normalize оба значения!
-    String expected = normalize(readFixture("expectedStylish.txt"));
-    String actual = normalize(Differ.generate(filePath1, filePath2));
-
-    assertEquals(expected, actual);
-  }
-
   private static String normalize(String text) {
     if (text == null) {
       return "";
@@ -39,39 +26,72 @@ public class DifferTest {
     return text.lines().map(String::stripTrailing).collect(Collectors.joining("\n")).trim();
   }
 
-  @Test
-  public void testGenerateYamlStylish() throws Exception {
-    // 1. Берем пути к yaml-файлам
-    String filePath1 = getFixturePath("file1.yml").toString();
-    String filePath2 = getFixturePath("file2.yml").toString();
+  // Хелпер для проверки
+  private void assertFormat(String ext, String format, String expectedFile) throws Exception {
+    String filePath1 = getFixturePath("file1." + ext).toString();
+    String filePath2 = getFixturePath("file2." + ext).toString();
 
-    // 2. Ожидаемый результат у нас тот же самый, что и для JSON (по условию задачи)
-    String expected = normalize(readFixture("expectedStylish.txt"));
+    String expected = normalize(readFixture(expectedFile));
+    String actual;
 
-    // 3. Запускаем генерацию для YAML
-    String actual = normalize(Differ.generate(filePath1, filePath2));
+    if (format.equals("default")) {
+      // Вызов без третьего аргумента
+      actual = normalize(Differ.generate(filePath1, filePath2));
+    } else {
+      // Вызов с явным указанием формата
+      actual = normalize(Differ.generate(filePath1, filePath2, format));
+    }
 
-    // 4. Сравниваем
-    assertEquals(expected, actual);
+    assertEquals(expected, actual, "Failed for " + ext + " and format " + format);
   }
+
+  // --- 8 Обязательных тестов ---
+
+  // 1. JSON + stylish
   @Test
-  public void testGeneratePlain() throws Exception{
-    String filePath1 = getFixturePath("file1.json").toString();
-    String filePath2 = getFixturePath("file2.json").toString();
-
-    String expected = normalize(readFixture("expectedPlain.txt"));
-    String actual = normalize(Differ.generate(filePath1, filePath2, "plain"));
-
-    assertEquals(expected, actual);
+  public void testJsonStylish() throws Exception {
+    assertFormat("json", "stylish", "expectedStylish.txt");
   }
-@Test
-  public void testGenerateJson() throws Exception{
-    String filePath1 = getFixturePath("file1.json").toString();
-    String filePath2 = getFixturePath("file2.json").toString();
 
-    String expected = normalize(readFixture("expectedJson.txt"));
-    String actual = normalize(Differ.generate(filePath1, filePath2, "json"));
+  // 2. JSON + plain
+  @Test
+  public void testJsonPlain() throws Exception {
+    assertFormat("json", "plain", "expectedPlain.txt");
+  }
 
-    assertEquals(expected, actual);
-}
+  // 3. JSON + json
+  @Test
+  public void testJsonJson() throws Exception {
+    assertFormat("json", "json", "expectedJson.txt");
+  }
+
+  // 4. JSON + default
+  @Test
+  public void testJsonDefault() throws Exception {
+    assertFormat("json", "default", "expectedStylish.txt");
+  }
+
+  // 5. YAML + stylish
+  @Test
+  public void testYamlStylish() throws Exception {
+    assertFormat("yml", "stylish", "expectedStylish.txt");
+  }
+
+  // 6. YAML + plain
+  @Test
+  public void testYamlPlain() throws Exception {
+    assertFormat("yml", "plain", "expectedPlain.txt");
+  }
+
+  // 7. YAML + json
+  @Test
+  public void testYamlJson() throws Exception {
+    assertFormat("yml", "json", "expectedJson.txt");
+  }
+
+  // 8. YAML + default
+  @Test
+  public void testYamlDefault() throws Exception {
+    assertFormat("yml", "default", "expectedStylish.txt");
+  }
 }
