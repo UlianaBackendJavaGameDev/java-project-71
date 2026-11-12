@@ -6,18 +6,19 @@ import java.util.List;
 import java.util.Map;
 
 public class PlainFormatter {
-    private String formatValue(Object value){
-        if(value == null){
+    private String formatValue(Object value) {
+        if (value == null) {
             return "null";
         }
-        if(value instanceof Map || value instanceof List){
+        if (value instanceof Map || value instanceof List) {
             return "[complex value]";
         }
-        if(value instanceof String){
+        if (value instanceof String) {
             return "'" + value + "'";
         }
         return String.valueOf(value);
     }
+
     public String format(List<DiffNode> diff) {
         StringBuilder result = new StringBuilder();
 

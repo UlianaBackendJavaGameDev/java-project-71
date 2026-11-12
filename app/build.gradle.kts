@@ -1,6 +1,6 @@
 plugins {
     application
-//    checkstyle
+    checkstyle
 }
 
 group = "hexlet.code"
@@ -27,3 +27,9 @@ tasks.test {
     useJUnitPlatform()
 }
 
+checkstyle {
+    toolVersion = "10.12.4"
+    configFile = file("config/checkstyle/checkstyle.xml")
+    // Это отключит проверку, если файл не найден (защита от падения сборки)
+    isIgnoreFailures = false
+}
