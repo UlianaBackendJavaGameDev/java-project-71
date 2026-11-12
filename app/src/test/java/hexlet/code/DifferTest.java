@@ -31,15 +31,16 @@ public class DifferTest {
     String filePath1 = getFixturePath("file1." + ext).toString();
     String filePath2 = getFixturePath("file2." + ext).toString();
 
+    // expected нормализуем, чтобы убрать лишние пробелы/переносы в конце файла
     String expected = normalize(readFixture(expectedFile));
     String actual;
 
     if (format.equals("default")) {
-      // Вызов без третьего аргумента
-      actual = normalize(Differ.generate(filePath1, filePath2));
+      // Убрали normalize вокруг Differ.generate!
+      actual = Differ.generate(filePath1, filePath2);
     } else {
-      // Вызов с явным указанием формата
-      actual = normalize(Differ.generate(filePath1, filePath2, format));
+      // Убрали normalize вокруг Differ.generate!
+      actual = Differ.generate(filePath1, filePath2, format);
     }
 
     assertEquals(expected, actual, "Failed for " + ext + " and format " + format);

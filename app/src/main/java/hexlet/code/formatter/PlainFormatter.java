@@ -42,7 +42,7 @@ public class PlainFormatter {
                     // В плоском формате неизмененные поля НЕ выводим
                     break;
                 default:
-                    break;
+                    throw new IllegalArgumentException("Unknown status: " + status);
             }
         }
 
