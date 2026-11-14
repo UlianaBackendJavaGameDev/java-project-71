@@ -1,6 +1,6 @@
 plugins {
     application
-    checkstyle
+    id("com.diffplug.spotless") version "6.25.0"
 }
 
 group = "hexlet.code"
@@ -26,10 +26,8 @@ application {
 tasks.test {
     useJUnitPlatform()
 }
-
-checkstyle {
-    toolVersion = "10.12.4"
-    configFile = file("config/checkstyle/checkstyle.xml")
-    // Это отключит проверку, если файл не найден (защита от падения сборки)
-    isIgnoreFailures = false
+spotless{
+    java{
+        googleJavaFormat()
+    }
 }

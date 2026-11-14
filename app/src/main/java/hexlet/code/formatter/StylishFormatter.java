@@ -29,8 +29,7 @@ public class StylishFormatter {
                     sb.append("  - ").append(key).append(": ").append(oldVal).append("\n");
                     sb.append("  + ").append(key).append(": ").append(newVal).append("\n");
                     break;
-                default:
-                    break;
+
             }
         }
         sb.append("}");
